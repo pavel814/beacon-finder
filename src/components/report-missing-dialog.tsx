@@ -95,11 +95,11 @@ function Field({
   className,
 }: {
   label: string;
-  required?: boolean;
-  hint?: string;
-  error?: string;
+  required?: boolean | undefined;
+  hint?: string | undefined;
+  error?: string | undefined;
   children: React.ReactNode;
-  className?: string;
+  className?: string | undefined;
 }) {
   return (
     <div className={cn("space-y-1.5", className)}>
@@ -166,7 +166,7 @@ export function ReportMissingDialog({
   }
 
   async function next() {
-    const ok = await trigger(STEPS[step].fields as unknown as (keyof FormValues)[]);
+    const ok = await trigger(STEPS[step]!.fields as unknown as (keyof FormValues)[]);
     if (!ok) return;
     setStep((s) => Math.min(s + 1, STEPS.length - 1));
   }
@@ -334,7 +334,7 @@ export function ReportMissingDialog({
 
                   <div className="grid gap-4 sm:grid-cols-2">
                     <Field label="Пол">
-                      <Select onValueChange={(v) => setValue("gender", v)} value={watch("gender")}>
+                      <Select onValueChange={(v) => setValue("gender", v)} value={watch("gender") ?? ""}>
                         <SelectTrigger>
                           <SelectValue placeholder="Не выбран" />
                         </SelectTrigger>
@@ -355,7 +355,7 @@ export function ReportMissingDialog({
 
                   <div className="grid gap-4 sm:grid-cols-2">
                     <Field label="Область проживания">
-                      <Select onValueChange={(v) => setValue("region", v)} value={watch("region")}>
+                      <Select onValueChange={(v) => setValue("region", v)} value={watch("region") ?? ""}>
                         <SelectTrigger>
                           <SelectValue placeholder="Не выбрана" />
                         </SelectTrigger>
@@ -412,7 +412,7 @@ export function ReportMissingDialog({
                       <Input inputMode="numeric" placeholder="напр. 175" {...register("height")} />
                     </Field>
                     <Field label="Телосложение">
-                      <Select onValueChange={(v) => setValue("build", v)} value={watch("build")}>
+                      <Select onValueChange={(v) => setValue("build", v)} value={watch("build") ?? ""}>
                         <SelectTrigger>
                           <SelectValue placeholder="Не выбрано" />
                         </SelectTrigger>
