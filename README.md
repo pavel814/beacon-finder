@@ -1,14 +1,98 @@
-# Welcome to your Lovable project
+# Beacon Finder
+
+Ты профессиональный разработчик и project-менеджер.
+Работаешь над сайтом поисково-спасательного отряда.
+Твоя задача сделать стильную, современную, удобную и функциональную форму для заявителей о пропавшем человеке. 
+На скриншотах то, что есть сейчас.
+
+содержание формы сейчас такое:
+Сообщить о пропавшем
+
+Заполните форму для экстренной связи
+
+Горячая линия: +375 (25) 633-28-03
+
+Не заполняйте это поле
+
+Поля со звёздочкой обязательны.
+
+Кто пропал
+
+ФИО пропавшего *
+
+Фото пропавшего Необязательно
+
+Выберите фото или перетащите сюда JPG, PNG до 5 МБ
+
+Дополнительные данные о человеке Необязательно
+
+Пол Не выбран Мужской Женский
+
+Возраст
+
+Дата рождения, если известна точно
+
+Можно указать только возраст и оставить дату пустой.
+
+Область проживания Не выбрана г. Минск Брестская область Витебская область Гомельская область Гродненская область Минская область Могилёвская область
+
+Населённый пункт проживания
+
+Когда и где
+
+Последнее известное место *
+
+Дата пропажи Необязательно
+
+Примерное время Необязательно
+
+Заполните то, что вам известно. Необязательные поля можно пропустить — координатор уточнит недостающую информацию после получения заявки.
+
+Внешность и одежда Необязательно
+
+Рост, см
+
+Телосложение Не выбрано Худощавое Нормальное Спортивное Плотное Полное
+
+Внешность
+
+Особые приметы
+
+Во что был одет
+
+Медицинские особенности
+
+Обстоятельства Необязательно
+
+Куда мог направиться
+
+Дополнительная информация / обстоятельства
+
+Данные заявителя
+
+Ваше имя *
+
+Ваш телефон *
+
+Я даю согласие на обработку моих персональных данных в соответствии с политикой конфиденциальности организации *
+
+ Отправить заявку
+
+Мы свяжемся с вами в течение 15 минут. При экстренной ситуации звоните по телефону горячей линии.
+
+Общий вид сайта на 4-ом скриншоте.
+
+Форма должна быть рабочей (все кнопки должны нажиматься).
 
 This project was built with [Lovable](https://lovable.dev).
 
 ## Build with Lovable
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+Continue developing this project in the [Lovable editor](https://lovable.dev/projects/bef14ebc-3da4-4681-80af-a1e2da94ebc2).
 
 - **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+- **Stay in sync**: every change made in Lovable is committed straight to this repository.
+- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
 
 ## Development
 
@@ -20,10 +104,3 @@ cd <repository-name>
 npm i
 npm run dev
 ```
-
-## Built with
-
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
