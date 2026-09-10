@@ -38,7 +38,7 @@ const MAX_PHOTO_BYTES = 5 * 1024 * 1024;
 
 const schema = z.object({
   fullName: z.string().trim().min(3, "Укажите ФИО пропавшего").max(120),
-  gender: z.string().optional(),
+  gender: z.string().min(1, "Укажите пол пропавшего"),
   age: z.string().trim().max(3).optional(),
   birthDate: z.string().optional(),
   region: z.string().optional(),
@@ -68,7 +68,7 @@ const schema = z.object({
 type FormValues = z.input<typeof schema>;
 
 const STEPS = [
-  { id: 0, title: "Кто пропал", icon: User, fields: ["fullName"] },
+  { id: 0, title: "Кто пропал", icon: User, fields: ["fullName", "gender"] },
   { id: 1, title: "Когда и где", icon: MapPin, fields: ["lastSeenPlace"] },
   { id: 2, title: "Приметы", icon: Shirt, fields: [] },
   { id: 3, title: "Ваши данные", icon: Phone, fields: ["reporterName", "reporterPhone", "consent"] },
@@ -194,7 +194,7 @@ export function ReportMissingDialog({
     <Dialog open={open} onOpenChange={closeAndReset}>
       <DialogContent
         showCloseButton={false}
-        className="max-h-[92vh] gap-0 overflow-hidden rounded-2xl border-0 p-0 shadow-[var(--shadow-modal)] sm:max-w-[680px]"
+        className="flex max-h-[92vh] flex-col gap-0 overflow-hidden rounded-2xl border-0 p-0 shadow-[var(--shadow-modal)] sm:max-w-[680px]"
       >
         <div className="relative px-6 py-5 text-primary-foreground" style={{ background: "var(--gradient-alert)" }}>
           <div className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3">
@@ -242,7 +242,7 @@ export function ReportMissingDialog({
             </Button>
           </div>
         ) : (
-          <form onSubmit={handleSubmit(onSubmit)} className="flex min-h-0 flex-col">
+          <form onSubmit={handleSubmit(onSubmit)} className="flex min-h-0 flex-1 flex-col">
             {/* Шаги */}
             <div className="border-b bg-card px-6 pt-4">
               <div className="flex items-center gap-1.5">
@@ -333,10 +333,14 @@ export function ReportMissingDialog({
                   </Field>
 
                   <div className="grid gap-4 sm:grid-cols-2">
-                    <Field label="Пол">
-                      <Select onValueChange={(v) => setValue("gender", v)} value={watch("gender") ?? ""}>
+                    <Field label="Пол" required error={errors.gender?.message}>
+                      <input type="hidden" {...register("gender")} />
+                      <Select
+                        onValueChange={(v) => setValue("gender", v, { shouldValidate: true })}
+                        value={watch("gender") ?? ""}
+                      >
                         <SelectTrigger>
-                          <SelectValue placeholder="Не выбран" />
+                          <SelectValue placeholder="Выберите" />
                         </SelectTrigger>
                         <SelectContent>
                           <SelectItem value="Мужской">Мужской</SelectItem>
