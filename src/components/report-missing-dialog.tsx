@@ -334,7 +334,11 @@ export function ReportMissingDialog({
 
                   <div className="grid gap-4 sm:grid-cols-2">
                     <Field label="Пол" required error={errors.gender?.message}>
-                      <Select onValueChange={(v) => setValue("gender", v)} value={watch("gender") ?? ""}>
+                      <input type="hidden" {...register("gender")} />
+                      <Select
+                        onValueChange={(v) => setValue("gender", v, { shouldValidate: true })}
+                        value={watch("gender") ?? ""}
+                      >
                         <SelectTrigger>
                           <SelectValue placeholder="Выберите" />
                         </SelectTrigger>
